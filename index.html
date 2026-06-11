@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pranab Paul & Dipa Paul's shoe Enterprise</title>
+    <meta name="description" content="Pranab Paul & Dipa Paul's Shoe Enterprise — affordable footwear wholesaler in Malda, West Bengal. Men, Women & Sports collection. Order on WhatsApp.">
+<meta name="keywords" content="shoe shop Malda, footwear wholesaler Malda, shoe enterprise West Bengal, buy shoes Malda">
+<meta name="google-site-verification" content="0luVI2Nd-dDPSPJSShZoXzv6ZagQkScFPMEgDMVCs6c" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        .stats-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+  padding:20px;
+}
+
+.stat-card{
+  background:#2E1A47;
+  color:white;
+  padding:30px 15px;
+  text-align:center;
+  border-radius:16px;
+  box-shadow:0 6px 16px rgba(0,0,0,.15);
+  transition:.3s;
+}
+
+.stat-card:hover{
+  transform:translateY(-5px);
+}
+
+.stat-number{
+  font-size:2rem;
+  font-weight:700;
+  color:#D4AF37;
+  margin-bottom:8px;
+}
+
+.stat-label{
+  font-size:.85rem;
+  letter-spacing:.05em;
+}
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        .page {
+            display: none;
+            padding: 40px 24px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        #home {
+            padding: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #tab-home:checked~#home {
+            display: block;
+        }
+
+        #tab-about:checked~#about {
+            display: block;
+        }
+
+        #tab-contact:checked~#contact {
+            display: block;
+        }
+
+        #tab-gallery:checked~#gallery {
+            display: block;
+        }
+
+        #tab-home:checked~#home,
+        body:not(:has(input:checked)) #home {
+            display: block;
+        }
+
+        .page h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .page p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            z-index: 100;
+        }
+
+        .bottom-nav label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            color: #777;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 8px 6px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: color 0.2s,
+                        background 0.2s,
+                        transform 0.15s;
+        }
+
+        .bottom-nav label svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.2s;
+        }
+
+        body {
+            background: #0a0a0a;
+        }
+
+        #hero {
+            height: 500vh;
+        }
+
+        .sticky {
+            position: sticky;
+            top: 0;
+            height: calc(100vh - 80px);
+            width: 100%;
+            overflow: hidden;
+        }
+
+        canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .text-block {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            padding: 0 8vw;
+            will-change: opacity, transform;
+        }
+
+        .text-block.center {
+            justify-content: center;
+            text-align: center;
+        }
+
+        .text-block.left {
+            justify-content: flex-start;
+            text-align: left;
+        }
+
+        .text-block.right {
+            justify-content: flex-end;
+            text-align: right;
+        }
+
+        .title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 700;
+            color: #f0ece4;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            text-shadow: 0 4px 60px rgba(0, 0, 0, 0.8);
+            white-space: pre-line;
+        }
+        .title em {
+            font-style: italic;
+            color: #d4a96a;
+        }
+
+        .sub {
+            margin-top: 1.1rem;
+            font-family: 'DM Mono', monospace;
+            font-size: clamp(0.7rem, 1.3vw, 0.9rem);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #d4a96a;
+        }
+
+        .desc {
+            margin-top: 1rem;
+            font-family: 'DM Mono', monospace;
+            font-size: clamp(0.7rem, 1.1vw, 0.85rem);
+            color: rgba(220, 215, 205, 0.6);
+            line-height: 1.8;
+            letter-spacing: 0.04em;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 44px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .scroll-hint-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.58rem;
+            letter-spacing: 0.35em;
+            color: rgba(255, 255, 255, 0.3);
+            text-transform: uppercase;
+        }
+
+        @keyframes drip {
+
+            0%,
+            100% {
+                transform: scaleY(0.5);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: scaleY(1);
+                opacity: 1;
+            }
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 44px;
+            background: linear-gradient(to bottom, #d4a96a, transparent);
+            transform-origin: top;
+            animation: drip 2s ease-in-out infinite;
+        }
+
+        .progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(to right, #d4a96a, #6a9fd4);
+            z-index: 20;
+            width: 0%;
+        }
+
+        .bottom-nav label:hover {
+            color: #ff6b1a;
+            background: rgba(255, 107, 26, 0.12);
+            transform: translateY(-3px);
+        }
+
+        #tab-home:checked~.bottom-nav label[for="tab-home"],
+        #tab-about:checked~.bottom-nav label[for="tab-about"],
+        #tab-contact:checked~.bottom-nav label[for="tab-contact"],
+        #tab-gallery:checked~.bottom-nav label[for="tab-gallery"],
+        body:not(:has(input:checked)) label[for="tab-home"] {
+            color: #ff6b1a;
+            background: rgba(255, 107, 26, 0.12);
+        }
+
+        body {
+            background-color: #FDF6E3;
+            padding-bottom: 80px;
+        }
+
+        .hero {
+            color: white;
+            background-color: #064E3b;
+            height: 300px;
+            width: 500px;
+            text-align: center;
+        }
+        .countdown-panel {
+            background: linear-gradient(145deg, #1a1e2a, #0f1119);
+            width: 380px;
+            border-radius: 2.5rem;
+            padding: 2.8rem 1.5rem;
+            box-shadow:
+                0 25px 45px rgba(0, 0, 0, 0.5),
+                inset 0 1px 1px rgba(255, 255, 255, 0.08);
+            text-align: center;
+            backdrop-filter: blur(2px);
+        }
+
+        .fast-digits {
+            font-size: 7rem;
+            font-weight: 800;
+            font-family: 'Fira Mono', 'Courier New', monospace;
+            letter-spacing: 8px;
+            background: radial-gradient(
+                circle at 30% 10%,
+                #f0f3fa,
+                #c0c9e0
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(80, 150, 255, 0.3);
+            margin: 0.2rem 0;
+            line-height: 1.2;
+        }
+
+        .counter-unit {
+            margin-top: 0.8rem;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            color: #8f9bb5;
+            text-transform: uppercase;
+            background: transparent;
+        }
+
+        @media (max-width: 480px) {
+            .countdown-panel {
+                width: 280px;
+                padding: 2rem 1rem;
+            }
+
+            .fast-digits {
+                font-size: 5rem;
+                letter-spacing: 4px;
+            }
+        }
+        .csp{
+            background-color:#F0EAE1;
+            width: 30px;
+            padding: 10px 15px;
+            height: 20px;
+            
+
+        }
+        .project-card{
+  position:relative;
+  padding:2.5rem;
+  border-radius:2px;
+  background:rgba(255,255,255);
+  border:1px solid rgba(255,255,255,0.07);
+  backdrop-filter:blur(20px);
+  cursor:pointer;
+  transition:all .4s cubic-bezier(.16,1,.3,1);
+  overflow:hidden;
+}
+
+.project-card:hover{
+  background:rgba(255,255,255,0.045);
+  transform:translateY(-4px);
+}
+
+.card-glow{
+  position:absolute;
+  top:-40px;
+  right:-40px;
+  width:160px;
+  height:160px;
+  border-radius:50%;
+  filter:blur(40px);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .4s;
+}
+
+.project-card:hover .card-glow{
+  opacity:1;
+}
+
+.card-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-bottom:1.6rem;
+}
+
+.card-num{
+  font-family:'DM Mono',monospace;
+  font-size:.7rem;
+  letter-spacing:.2em;
+  opacity:.85;
+}
+
+.card-year-label{
+  font-family:'DM Mono',monospace;
+  font-size:.65rem;
+  color:rgba(255,255,255,.3);
+  letter-spacing:.1em;
+}
+
+.card-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.3rem,2.2vw,1.75rem);
+  font-weight:600;
+  line-height:1.2;
+  margin-bottom:.9rem;
+  letter-spacing:-.01em;
+}
+
+.card-desc{
+  font-size:.87rem;
+  line-height:1.75;
+  margin-bottom:1.6rem;
+}
+
+.card-tags{
+  display:flex;
+  gap:.5rem;
+  flex-wrap:wrap;
+}
+
+.tag{
+  padding:.28rem .75rem;
+  border-radius:2px;
+  font-family:'DM Mono',monospace;
+  font-size:.62rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.card-arrow{
+  position:absolute;
+  bottom:2.5rem;
+  right:2.5rem;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:.3;
+  transition:all .3s ease;
+}
+
+.project-card:hover .card-arrow{
+  opacity:1;
+  transform:translate(4px,-4px);
+}
+.cdd{
+    width: 100%;
+    height: 300px;
+    padding: 20px 30px;
+    background-color: #2E1A47;
+    text-align: center;
+    color: white;
+
+}
+.about-section {
+  background: #F0EAE1;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  border: 1px solid #E9E3DB;
+}
+
+.about-section h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  color: #2E1A47;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.about-section h3 svg {
+  width: 18px;
+  height: 18px;
+  stroke: #D4AF37;
+  fill: none;
+  stroke-width: 2;
+}
+        .whatsapp-cta{
+    margin:40px 20px;
+    padding:40px 25px;
+    text-align:center;
+    background:linear-gradient(135deg,#2E1A47,#4A2A73);
+    border-radius:20px;
+    color:white;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.whatsapp-cta h2{
+    font-size:1.8rem;
+    margin-bottom:15px;
+    color:#D4AF37;
+}
+
+.whatsapp-cta p{
+    color:#E5E5E5;
+    line-height:1.7;
+    margin-bottom:25px;
+    font-size:.95rem;
+}
+
+.wa-btn{
+    display:inline-block;
+    padding:14px 28px;
+    background:#25D366;
+    color:white;
+    text-decoration:none;
+    border-radius:50px;
+    font-weight:700;
+    font-size:1rem;
+    transition:.3s;
+}
+
+.wa-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(37,211,102,.4);
+}
+
+.about-section p {
+  font-size: 0.82rem;
+  color: #5C5265;
+  line-height: 1.7;
+}
+.cda{
+  padding: 20px 30px;
+  border-radius: 20px;
+  background: #2E1A47;
+  height: 200px;
+  width: 200px;
+  border-left: 2px solid gold;
+  color: gold;
+}
+.btn {
+      display: block;
+      text-align: center;
+      
+      padding: 10px;
+      background: #111;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #25D366;
+    }
+    .shoei{
+        margin: 20px 40px;
+        padding: 40px;
+        text-align: center;
+        box-shadow: 0 4px 8px;
+        border-radius: 10px;
+      }
+      .shoei img{
+        width: 200px;
+      }
+      .shoeii{
+        margin: 20px 50px;
+        padding: 40px;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow:0 4px 8px;
+      }
+      .shoeii img{
+        width:250px;
+        margin:-10px;
+      }
+      .shoeiii{
+       margin: 20px 40px;
+        padding: 40px;
+        text-align: center;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px;
+      }
+      .shoeiii img{
+        width: 300px;
+        margin: -13px;
+      }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Radio inputs -->
+
+    <input
+        type="radio"
+        name="tab"
+        id="tab-home"
+        checked
+    >
+
+    <input
+        type="radio"
+        name="tab"
+        id="tab-about"
+    >
+
+    <input
+        type="radio"
+        name="tab"
+        id="tab-contact"
+    >
+
+    <input
+        type="radio"
+        name="tab"
+        id="tab-gallery"
+    >
+
+    <!-- Pages -->
+
+    <div id="home" class="page">
+        <div id="hero">
+            <div class="sticky">
+                <canvas id="c"></canvas>
+
+                <div class="overlay">
+                  <div class="text-block center" id="t0">
+                        <div>
+                            <div class="title">
+                                Pranab Paul .
+                            </div>
+
+                            <div class="sub">
+                                Shoe seller
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-block left" id="t1">
+                        <div>
+                            <div class="title">
+                                I sell <em>BEST</em>
+                                Quality Shoes.
+                            </div>
+
+                            <div class="desc">
+                Our shoes are safe to wear and 
+                                <br>
+                                with affordable prices
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-block right" id="t2">
+                        <div>
+                            <div class="title">
+                                I Think <em>Comfortable</em>
+                                shoes should be the rights of everyone.
+                            </div>
+
+                            <div class="desc">
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="scroll-hint" id="scrollHint">
+                        <div class="scroll-hint-label">
+                            Scroll
+                        </div>
+
+                        <div class="scroll-line"></div>
+                    </div>
+                </div>
+
+                <div
+                    class="progress"
+                    id="progress"
+                ></div>
+
+            </div>
+        </div>
+        
+        <div class="project-card reveal reveal-d1">
+  <div class="card-glow" style="background:rgba(212,169,106,0.28)"></div>
+
+  <div class="card-header">
+    <span class="card-num" style="color:#d4a96a">01</span>
+    <span class="card-year-label">2024</span>
+  </div>
+
+  <div class="card-title">Completely Safe to Skin</div>
+
+  <div class="card-desc">
+   Our shoes are made differently with skin safe chemicals
+  </div>
+
+  
+
+  <div class="card-arrow" style="border:1px solid rgba(212,169,106,0.5)">
+    <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+      <path d="M2 12L12 2M12 2H5M12 2V9"
+            stroke="#d4a96a"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"/>
+    </svg>
+  </div>
+</div>
+        <br>
+        <br>
+        <h1 style="text-align:center;color:#191221;margin:40px 0 25px;">
+  Our Stats
+</h1>
+
+<div class="stats-grid">
+
+  <div class="stat-card">
+    <div class="stat-number" data-target="10">0</div>
+    <div class="stat-label">Years Experience</div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-number" data-target="5000">0</div>
+    <div class="stat-label">Happy Customers</div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-number" data-target="1000">0</div>
+    <div class="stat-label">Pairs Sold</div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-number" data-target="100">0</div>
+    <div class="stat-label">Quality Checked</div>
+  </div>
+
+</div>
+        <br>
+        <br>
+        <div class="whatsapp-cta">
+    <h2>Need Help Choosing The Perfect Shoes?</h2>
+
+    <p>
+        Contact us directly on WhatsApp and get quick assistance,
+        product photos, prices, and ordering support.
+    </p>
+
+    <a href="https://wa.me/917908348417?text=Hello%20I%20want%20to%20know%20more%20about%20your%20shoes"
+       target="_blank"
+       class="wa-btn">
+       📱 Order On WhatsApp
+    </a>
+            <br>
+            <br>
+        </div>
+        <h1 style="color:#CFAA38; margin-bottom:20px;">
+  Why Choose Us
+</h1>
+
+<div class="about-section">
+  <h3>
+    <svg viewBox="0 0 24 24">
+      <path d="M20 6L9 17l-5-5"/>
+    </svg>
+    Premium Quality
+  </h3>
+
+  <p>
+    Every pair of shoes is carefully selected for comfort,
+    durability, and long-lasting performance.
+  </p>
+</div>
+
+<div class="about-section">
+  <h3>
+    <svg viewBox="0 0 24 24">
+      <path d="M20 6L9 17l-5-5"/>
+    </svg>
+    Affordable Prices
+  </h3>
+
+  <p>
+    We believe quality footwear should be available to everyone,
+    which is why we offer honest and competitive pricing.
+  </p>
+</div>
+
+<div class="about-section">
+  <h3>
+    <svg viewBox="0 0 24 24">
+      <path d="M20 6L9 17l-5-5"/>
+    </svg>
+    Comfortable Fit
+  </h3>
+
+  <p>
+    Our footwear is designed to provide all-day comfort
+    for work, travel, and everyday use.
+  </p>
+</div>
+
+<div class="about-section">
+  <h3>
+    <svg viewBox="0 0 24 24">
+      <path d="M20 6L9 17l-5-5"/>
+    </svg>
+    Wholesale Available
+  </h3>
+
+  <p>
+    We serve both individual customers and retailers with
+    attractive wholesale pricing and bulk order support.
+  </p>
+</div>
+
+<div class="about-section">
+  <h3>
+    <svg viewBox="0 0 24 24">
+      <path d="M20 6L9 17l-5-5"/>
+    </svg>
+    Trusted In Malda
+  </h3>
+
+  <p>
+    Families across Malda trust us for reliable products,
+    friendly service, and excellent value.
+  </p>
+</div>
+
+<div class="about-section">
+  <h3>
+    <svg viewBox="0 0 24 24">
+      <path d="M20 6L9 17l-5-5"/>
+    </svg>
+    Easy WhatsApp Ordering
+  </h3>
+
+  <p>
+    Browse products and place your order directly through
+    WhatsApp for a fast and convenient experience.
+  </p>
+</div>
+        <br>
+        <br>
+<h1 style="color: #191221;">What People Say</h1>
+<br>
+<br>
+<br>
+<br>
+<div class="project-card reveal reveal-d1">
+  <div class="card-glow" style="background:rgba(212,169,106,0.28)"></div>
+
+  <div class="card-header">
+    <span class="card-num" style="color:#d4a96a">01</span>
+    <span class="card-year-label">2024</span>
+  </div>
+
+  <div class="card-title">⭐⭐⭐⭐⭐</div>
+
+  <div class="card-desc">
+   "Best footwear shop in Malda! The quality is outstanding and prices are very reasonable. Pranab da always helps find the right fit." - Ranjit Das, Malda Town
+  </div>
+
+  
+
+  <div class="card-arrow" style="border:1px solid rgba(212,169,106,0.5)">
+    <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+      <path d="M2 12L12 2M12 2H5M12 2V9"
+            stroke="#d4a96a"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"/>
+    </svg>
+  </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <div class="project-card reveal reveal-d1">
+  <div class="card-glow" style="background:rgba(212,169,106,0.28)"></div>
+
+  <div class="card-header">
+    <span class="card-num" style="color:#d4a96a">02</span>
+    <span class="card-year-label">2024</span>
+  </div>
+
+  <div class="card-title">⭐⭐⭐⭐⭐</div>
+
+  <div class="card-desc">
+   "My whole family buys shoes here. Excellent collection for all ages and the staff is extremely helpful."
+<br>
+   — Priya Sen, English Bazar
+  </div>
+
+  
+
+  <div class="card-arrow" style="border:1px solid rgba(212,169,106,0.5)">
+    <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+      <path d="M2 12L12 2M12 2H5M12 2V9"
+            stroke="#d4a96a"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"/>
+    </svg>
+  </div>
+</div>
+
+
+</div>
+
+    </div>
+
+    <div id="about" class="page">
+        <div class="about-section">
+  <h3>
+    <svg viewBox="0 0 24 24">
+      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+    </svg>
+    About Us
+  </h3>
+
+  <h1 style="color: #CFAA38;">
+                Pranab Paul & Dipa Paul
+            </h1>
+            <p>Footwear Enterprise · Malda</p>
+            <br>
+            
+            <h1>Our Story</h1>
+            <p>Two decades of trust, comfort, and craftsmanship
+<br>in the heart of Malda.</p>
+</div>
+        <br>
+        <br>
+        <h1 style="color: gold;">
+            Meet the people working behind
+        <br>
+        <br>
+        
+        </h1>
+        <div class="about-section">
+  <h3>
+    <svg viewBox="0 0 24 24">
+      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+    </svg>
+    Pranab Paul
+  </h3>
+
+  <p>
+    Founder and the Manager of the company
+  </p>
+</div>
+        <br>
+        <br>
+       <div class="about-section">
+  <h3>
+    <svg viewBox="0 0 24 24">
+      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+    </svg>
+    Dipa Paul
+  </h3>
+
+  <p>
+   Founder and Manages Sales for company
+  </p>
+</div>
+        
+<br>
+        <hr>
+<br>
+<br>
+<div class="about-section">
+  <h3>
+    <svg viewBox="0 0 24 24">
+      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+    </svg>
+    About Us
+  </h3>
+
+  <p>
+    Pranab Paul &amp; Dipa Paul Enterprise was established with a simple vision — to bring quality footwear to the people of Malda at honest prices. What started as a small shop has grown into a trusted name, serving thousands of families across English Bazar and surrounding areas.
+  </p>
+</div>
+
+
+    <div class="about-section">
+  <h3>
+    <svg viewBox="0 0 24 24">
+      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+    </svg>
+    Our Promise
+  </h3>
+
+  <p>
+    Every pair of shoes we sell is handpicked for quality. We stock from reliable manufacturers and ensure that both durability and style are never compromised. Comfort is our priority — because you deserve the best for every step.
+  </p>
+</div>
+
+<div class="about-section">
+  <h3>
+    <svg viewBox="0 0 24 24">
+      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+    </svg>
+    Wholesale & Retail
+  </h3>
+
+  <p>
+    We cater to both individual buyers and bulk wholesale orders. Whether you're shopping for your family or stocking your store, we offer competitive pricing with the same commitment to quality at every scale.
+    
+  </p>
+</div>
+    </div>
+
+    <div id="contact" class="page">
+        <div style="text-align: center;" class="about-section">
+  <h3>
+    <svg viewBox="0 0 24 24">
+      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+    </svg>
+    
+  </h3>
+
+  <h1 style="color: #CFAA38;">
+                Pranab Paul & Dipa Paul
+            </h1>
+            <p>Footwear Enterprise · Malda</p>
+            <br>
+            
+            <h1>Get In touch</h1>
+            <p>Visit us or send a message — we're always happy to help.</p>
+</div>
+<div class="about-section">
+  <h3>
+     <svg viewBox="0 0 24 24">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+      <circle cx="9" cy="7" r="4"/>
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+    </svg>
+    Contact us
+  </h3>
+
+  <h1 style="color: #CFAA38;">
+                Pranab Paul & Dipa Paul
+            </h1>
+            <p>Footwear Enterprise · Malda</p>
+            <br>
+            
+            <h1>Our Contact Info</h1>
+            <p>📍 Mahesmati,Sankopara,Malda,West Bengal
+                <br>
+                📞 +91 7908348417
+                <br>
+                ⌚ Mon - Sat: 9:00 AM - 7:00PM
+                <br>
+                🌐 developer-srish.github.io/pranabpaul-customer.care
+            </p>
+</div>
+    </div>
+
+    <div id="gallery" class="page">
+        <div class="shoei">
+    <img src="https://i.postimg.cc/xTVvFm8z/20260416-175134.jpg">
+    <p style="color:green;">In stock</p>
+    
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/7LS9LN5S/20260416-175214.jpg">
+    <p style="color:green;">In stock</p>
+    
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/FH4gBLWL/20260416-175246.jpg">
+    <p style="color:green;">In stock</p>
+    
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/137XqxNT/20260416-175319.jpg">
+    <p style="color:green;">In stock</p>
+    
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/SRj3MJXS/20260418-184622.jpg">
+    <p style="color:green;">In stock</p>
+    
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+    
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/289vG311/20260418-184659.jpg">
+    <p style="color:green;">In stock</p>
+    
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/0N0ytHVm/20260418-184721.jpg">
+    <p style="color:green;">In stock</p>
+    
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/V6TQ4qPX/20260418-184759.jpg">
+    <p style="color:green;">In stock</p>
+    
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/1XhPsG71/20260418-184825.jpg">
+    <p style="color:green;">In stock</p>
+    
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/43jRQvgr/20260418-184843.jpg">
+    <p style="color:green;">In stock</p>
+    
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/mkRqm86S/20260418-184918.jpg">
+    <p style="color:green;">In stock</p>
+    
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/C5mvmY8S/20260418-184942.jpg">
+    <p style="color:green;">In stock</p>
+    
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/wx00Kq1r/20260418-185002.jpg">
+    <p style="color:green;">In stock</p>
+    
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/HsF0HVdS/20260418-185041.jpg">
+    <p style="color:green;">In stock</p>
+    
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/6QcG73xw/20260418-185127.jpg">
+    <p style="color:green;">In stock</p>
+    
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/c6GJkyGb/20260418-185207.jpg">
+    <p style="color:green;">In stock</p>
+    
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/bvwx8Ms0/20260418-185250.jpg">
+    <p style="color:green;">In stock</p>
+    
+    
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+    
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/Pxkd1GY1/20260418-185325.jpg">
+    <p style="color:green;">In stock</p>
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+    
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/sDMbf6Zz/20260418-185414.jpg">
+    <p style="color:green;">In stock</p>
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/XYwHXTNJ/20260418-185432.jpg">
+    <p style="color:green;">In stock</p>
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/QtPwc1RR/20260418-185449.jpg">
+    <p style="color:green;">In stock</p>
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/TPsCsGCS/20260418-185501.jpg">
+    <p style="color:green;">In stock</p>
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/3J3CndYb/20260418-185520.jpg">
+    <p style="color:green;">In stock</p>
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/4NF7Vddh/20260418-185555.jpg">
+    <p style="color:green;">In stock</p>
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/yNh8QY14/20260418-185608.jpg">
+    <p style="color:green;">In stock</p>
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/ZYQ4Ly8N/20260418-185849.jpg">
+    <p style="color:green;">In stock</p>
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+  </div>
+  <div class="shoei">
+    <img src="https://i.postimg.cc/YS2CPBht/20260418-185859.jpg">
+    <p style="color:green;">In stock</p>
+    <a class="btn" href="https://wa.me/+917908348417?text=I%20want%20to%20order">Order Now</a>
+  </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+
+    <nav class="bottom-nav">
+        <label for="tab-home">
+            <svg viewBox="0 0 24 24">
+                <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9.5z"></path>
+                <polyline points="9 21 9 12 15 12 15 21"></polyline>
+            </svg>
+
+            Home
+        </label>
+        <label for="tab-about">
+            <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path>
+            </svg>
+
+            About
+        </label>
+
+        <label for="tab-contact">
+            <svg viewBox="0 0 24 24">
+                <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+
+            Contact
+        </label>
+
+        <label for="tab-gallery">
+            <svg viewBox="0 0 24 24">
+                <rect
+                    x="3"
+                    y="3"
+                    width="18"
+                    height="18"
+                    rx="2"
+                ></rect>
+
+                <circle
+                    cx="8.5"
+                    cy="8.5"
+                    r="1.5"
+                ></circle>
+
+                <polyline points="21 15 16 10 5 21"></polyline>
+            </svg>
+
+            Gallery
+        </label>
+    </nav>
+
+    <script>
+        const counters = document.querySelectorAll('.stat-number');
+
+counters.forEach(counter => {
+    const target = +counter.dataset.target;
+
+    function startCounter() {
+        let count = 0;
+
+        function update() {
+            const increment = target / 100;
+
+            if (count < target) {
+                count += increment;
+
+                counter.innerText =
+                    target === 100
+                        ? Math.ceil(count)
+                        : Math.ceil(count);
+
+                requestAnimationFrame(update);
+            } else {
+                counter.innerText =
+                    target === 100
+                        ? "100%"
+                        : target + "+";
+
+                // Wait at target
+                setTimeout(() => {
+                    counter.innerText = "0";
+
+                    // Wait at 0
+                    setTimeout(() => {
+                        startCounter();
+                    }, 2000);
+
+                }, 2000);
+            }
+        }
+
+        update();
+    }
+
+    startCounter();
+});
+        
+        
+        // ── IMAGES ─────────────────────────────────────
+
+        const img0 = new Image(),
+              img1 = new Image();
+
+        function tryLoad(img, url) {
+            const proxies = [
+                url,
+                'https://corsproxy.io/?' +
+                    encodeURIComponent(url),
+                'https://api.allorigins.win/raw?url=' +
+                    encodeURIComponent(url),
+            ];
+
+            let attempt = 0;
+
+            function next() {
+                if (attempt >= proxies.length) return;
+
+                img.crossOrigin = 'anonymous';
+                img.onload = () => {};
+                img.onerror = () => {
+                    attempt++;
+                    next();
+                };
+
+                img.src = proxies[attempt++];
+            }
+
+            next();
+        }
+
+        tryLoad(
+            img0,
+            'https://i.postimg.cc/vmwCQmbt/1781020444025.png'
+        );
+
+        tryLoad(
+            img1,
+            'https://i.postimg.cc/kXkpc5VF/1781020549412.png'
+        );
+        // ── CANVAS ─────────────────────────────────────
+
+        const canvas =
+            document.getElementById('c');
+
+        const ctx =
+            canvas.getContext('2d');
+
+        let W, H;
+
+        function resize() {
+            const dpr =
+                window.devicePixelRatio || 1;
+
+            const parent =
+                canvas.parentElement;
+
+            W = parent.offsetWidth;
+            H = parent.offsetHeight;
+
+            canvas.width = W * dpr;
+            canvas.height = H * dpr;
+
+            canvas.style.width = W + 'px';
+            canvas.style.height = H + 'px';
+
+            ctx.setTransform(
+                dpr,
+                0,
+                0,
+                dpr,
+                0,
+                0
+            );
+        }
+
+        resize();
+
+        window.addEventListener(
+            'resize',
+            resize
+        );
+
+        // ── DRAW ─────────────────────────────────────
+
+        function drawCover(
+            img,
+            alpha,
+            scale,
+            offsetY
+        ) {
+            if (
+                !img.complete ||
+                !img.naturalWidth
+            ) {
+                return;
+            }
+
+            const s =
+                Math.max(
+                    W / img.naturalWidth,
+                    H / img.naturalHeight
+                ) * scale;
+
+            const dw =
+                img.naturalWidth * s;
+
+            const dh =
+                img.naturalHeight * s;
+
+            ctx.globalAlpha = alpha;
+
+            ctx.drawImage(
+                img,
+                (W - dw) / 2,
+                (H - dh) / 2 + offsetY,
+                dw,
+                dh
+            );
+        }
+
+        let blend = 0,
+            targetBlend = 0;
+
+        // ── RENDER LOOP ───────────────────────────────
+
+        function render() {
+            blend +=
+                (targetBlend - blend) * 0.075;
+
+            const b = blend;
+
+            ctx.clearRect(0, 0, W, H);
+
+            ctx.fillStyle = '#0a0a0a';
+            ctx.fillRect(0, 0, W, H);
+            drawCover(
+                img0,
+                Math.max(0, 1 - b * 1.15),
+                1 + b * 0.08,
+                -b * 40
+            );
+
+            drawCover(
+                img1,
+                Math.min(1, b * 1.15),
+                1.08 - b * 0.08,
+                (1 - b) * 40
+            );
+
+            const g = ctx.createRadialGradient(
+                W / 2,
+                H / 2,
+                H * 0.25,
+                W / 2,
+                H / 2,
+                H * 0.9
+            );
+
+            g.addColorStop(
+                0,
+                'rgba(0,0,0,0)'
+            );
+
+            g.addColorStop(
+                1,
+                'rgba(0,0,0,0.75)'
+            );
+
+            ctx.fillStyle = g;
+            ctx.fillRect(0, 0, W, H);
+
+            ctx.globalAlpha = 0.02;
+
+            for (let i = 0; i < 500; i++) {
+                const v =
+                    (Math.random() * 255) | 0;
+
+                ctx.fillStyle =
+                    `rgb(${v},${v},${v})`;
+
+                ctx.fillRect(
+                    Math.random() * W,
+                    Math.random() * H,
+                    1,
+                    1
+                );
+            }
+
+            ctx.globalAlpha = 1;
+
+            requestAnimationFrame(
+                render
+            );
+        }
+
+        render();
+
+        // ── SCROLL ─────────────────────────────────────
+
+        const hero =
+            document.getElementById('hero');
+
+        const progressEl =
+            document.getElementById(
+                'progress'
+            );
+
+        const hintEl =
+            document.getElementById(
+                'scrollHint'
+            );
+
+        const textEls = [
+            {
+                el: document.getElementById(
+                    't0'
+                ),
+                threshold: 0
+            },
+            {
+                el: document.getElementById(
+                    't1'
+                ),
+                threshold: 0.30
+            },
+            {
+                el: document.getElementById(
+                    't2'
+                ),
+                threshold: 0.62
+            }
+        ];
+        function eio(t) {
+            return t < 0.5
+                ? 4 * t * t * t
+                : 1 -
+                  Math.pow(
+                      -2 * t + 2,
+                      3
+                  ) / 2;
+        }
+
+        function onScroll() {
+            const stickyH =
+                canvas.parentElement
+                    .offsetHeight;
+
+            const p = Math.min(
+                Math.max(
+                    window.scrollY /
+                        (
+                            hero.offsetHeight -
+                            stickyH
+                        ),
+                    0
+                ),
+                1
+            );
+
+            targetBlend = eio(
+                Math.min(
+                    p / 0.72,
+                    1
+                )
+            );
+
+            progressEl.style.width =
+                (p * 100) + '%';
+
+            hintEl.style.opacity =
+                Math.max(
+                    0,
+                    1 - p * 14
+                );
+
+            textEls.forEach(
+                ({
+                    el,
+                    threshold
+                }) => {
+
+                    const dist =
+                        Math.abs(
+                            p - threshold
+                        );
+
+                    const RANGE = 0.18;
+
+                    const opacity =
+                        dist < RANGE
+                            ? 1 -
+                              dist / RANGE
+                            : 0;
+
+                    const yShift =
+                        (p - threshold) *
+                        -65;
+
+                    el.style.opacity =
+                        opacity;
+
+                    el.style.transform =
+                        `translateY(${yShift}px)`;
+                }
+            );
+        }
+
+        window.addEventListener(
+            'scroll',
+            onScroll,
+            { passive: true }
+        );
+
+        onScroll();
+        (function () {
+            let val = 0;
+            const maxVal = 99;
+
+            const el =
+                document.getElementById(
+                    'speedCounter'
+                );
+
+            let interval = null;
+
+            function tick() {
+                if (val <= maxVal) {
+                    el.textContent =
+                        val
+                            .toString()
+                            .padStart(2, '0');
+
+                    val++;
+                }
+
+                if (val > maxVal) {
+                    if (interval) {
+                        clearInterval(
+                            interval
+                        );
+
+                        interval = null;
+                    }
+                }
+            }
+
+            tick();
+
+            interval = setInterval(
+                tick,
+                30
+            );
+        })
+        ();
+    </script>
+    </body>
+
+</html>
